@@ -10,6 +10,7 @@ type Task = {
 };
 
 function App() {
+  // acting db for tasks
   const [tasks, setTasks] = React.useState<Task[]>([
     { id: 1, title: "Learn React", isCompleted: false },
   ]);
@@ -19,7 +20,7 @@ function App() {
   const onAddTask = () => {
     setTasks([
       ...tasks,
-      { id: Date.now(), title: taskName, isCompleted: false },
+      { id: Date.now(), title: taskName, isCompleted: false }, // Date.now() is just a placeholder -> real db handles this automatically
     ]);
   };
 
