@@ -30,13 +30,9 @@ export default defineConfig([
       "**/__tests__/**/*.{js,jsx,ts,tsx}",
       "**/*.{test,spec}.{js,jsx,ts,tsx}",
     ],
-    plugins: {
-      "testing-library": testingLibrary,
-      "jest-dom": jestDom,
-    },
-    rules: {
-      ...testingLibrary.configs.react.rules,
-      ...jestDom.configs.recommended.rules,
-    },
+    extends: [
+      testingLibrary.configs["flat/react"],
+      jestDom.configs["flat/recommended"],
+    ],
   },
 ]);
