@@ -22,6 +22,7 @@ function App() {
       ...tasks,
       { id: Date.now(), title: taskName, isCompleted: false }, // Date.now() is just a placeholder -> real db handles this automatically
     ]);
+    setTaskName(""); // clears input immediately
   };
 
   return (
