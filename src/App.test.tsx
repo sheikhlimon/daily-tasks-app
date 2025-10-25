@@ -29,9 +29,9 @@ describe("App", () => {
   test("should clear input field after adding a task", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task" });
+    const input = screen.getByRole("textbox", { name: "Add Task:" });
 
-    const button = screen.getByRole("button", { name: "Add " });
+    const button = screen.getByRole("button", { name: "Add" });
 
     await userEvent.type(input, "New Task");
 
