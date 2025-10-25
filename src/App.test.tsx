@@ -40,7 +40,19 @@ describe("App", () => {
     expect(input).toHaveValue("");
   });
 
-  test.todo("should not add an empty task", () => {});
+  test("should not add an empty task", async () => {
+    render(<App />);
+
+    const input = screen.getByRole("textbox", { name: "Add Task:" });
+
+    const button = screen.getByRole("button", { name: "Add" });
+
+    await userEvent.type(input, "     ");
+
+    await userEvent.click(button);
+
+    expect(screen.queryAllByRole("listitem")).toHaveLength(0);
+  });
 
   test.todo("should add a task by enter key", () => {});
 });
