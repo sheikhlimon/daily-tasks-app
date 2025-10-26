@@ -11,18 +11,21 @@ type Task = {
 
 function App() {
   // acting db for tasks
-  const [tasks, setTasks] = React.useState<Task[]>([
-    { id: 1, title: "Learn React", isCompleted: false },
-  ]);
+  const [tasks, setTasks] = React.useState<Task[]>([]);
 
   const [taskName, setTaskName] = React.useState("");
 
   const onAddTask = () => {
+    if (!taskName.trim()) return; // ignore empty tasks
     setTasks([
       ...tasks,
       { id: Date.now(), title: taskName, isCompleted: false }, // Date.now() is just a placeholder -> real db handles this automatically
     ]);
     setTaskName(""); // clears input immediately
+  };
+
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") onAddTask();
   };
 
   return (
@@ -32,6 +35,7 @@ function App() {
       <input
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
+        onKeyDown={onInputKeyDown}
         id="task-input"
       />
       <button onClick={onAddTask}>Add</button>
