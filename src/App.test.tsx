@@ -54,5 +54,13 @@ describe("App", () => {
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
   });
 
-  test.todo("should add a task by enter key", () => {});
+  test("should add a task by enter key", async () => {
+    render(<App />);
+
+    const input = screen.getByRole("textbox", { name: "Add Task:" });
+
+    await userEvent.type(input, "New Task {enter}");
+
+    expect(screen.queryAllByRole("listitem")).toHaveLength(1);
+  });
 });
