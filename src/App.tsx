@@ -1,6 +1,7 @@
 import React from "react";
-import type { Task } from "./types";
 import AddTask from "./AddTask";
+import TaskList from "./TaskList";
+import type { Task } from "./types";
 
 function App() {
   // acting db for tasks
@@ -17,11 +18,7 @@ function App() {
     <div>
       <h1>Tasks</h1>
       <AddTask onAddTask={onAddTask} />
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
-        ))}
-      </ul>
+      <TaskList tasks={tasks} />
     </div>
   );
 }
