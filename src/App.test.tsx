@@ -63,4 +63,20 @@ describe("App", () => {
 
     expect(screen.queryAllByRole("listitem")).toHaveLength(1);
   });
+
+  test("should toggle task completion when checkbox is clicked", async () => {
+    render(<App />);
+
+    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const button = screen.getByRole("button", { name: "Add" });
+
+    await userEvent.type(input, "New Task");
+    await userEvent.click(button);
+
+    const checkbox = screen.getByRole("checkbox", { name: "New Task" });
+    expect(checkbox).not.toBeChecked();
+
+    await userEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
+  });
 });

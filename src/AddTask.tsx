@@ -17,13 +17,13 @@ export default function AddTask({ onAddTask }: AddTaskProps) {
 
   return (
     <form onSubmit={handleAddTask}>
-      <label htmlFor="task-input">Add Task: </label>
+      <label htmlFor="task-input">Add Task:</label>
       <input
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
         id="task-input"
       />
-      <button>Add</button>
+      <button type="submit">Add</button>
     </form>
   );
 }

@@ -3,6 +3,7 @@ import AddTask from "./AddTask";
 import TaskList from "./TaskList";
 import type { Task } from "./types";
 import TaskListItem from "./TaskItemList";
+import TaskListHeader from "./TaskListHeader";
 
 function App() {
   // acting db for tasks
@@ -15,16 +16,22 @@ function App() {
     ]);
   };
 
+  const onToggleTask = (id: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task,
+      ),
+    );
+  };
+
   return (
     <div>
       <h1>Tasks</h1>
       <AddTask onAddTask={onAddTask} />
-      <TaskList>
-        <ul>
-          {tasks.map((task) => (
-            <TaskListItem key={task.id}>{task.title}</TaskListItem>
-          ))}
-        </ul>
+      <TaskList header={<TaskListHeader count={tasks.length} />}>
+        {tasks.map((task) => (
+          <TaskListItem key={task.id} task={task} onToggleTask={onToggleTask} />
+        ))}
       </TaskList>
     </div>
   );
