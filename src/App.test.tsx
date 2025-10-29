@@ -79,4 +79,23 @@ describe("App", () => {
     await userEvent.click(checkbox);
     expect(checkbox).toBeChecked();
   });
+
+  test("should delete task when delete button is clicked", async () => {
+    render(<App />);
+
+    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const button = screen.getByRole("button", { name: "Add" });
+
+    await userEvent.type(input, "Task to Delete");
+    await userEvent.click(button);
+
+    expect(screen.getByText("Task to Delete")).toBeInTheDocument();
+
+    const deleteButton = screen.getByRole("button", {
+      name: "Delete Task to Delete",
+    });
+    await userEvent.click(deleteButton);
+
+    expect(screen.queryByText("Task to Delete")).not.toBeInTheDocument();
+  });
 });

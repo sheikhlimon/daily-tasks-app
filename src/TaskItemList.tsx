@@ -3,11 +3,13 @@ import type { Task } from "./types";
 type TaskListItemProps = {
   task: Task;
   onToggleTask: (id: number) => void;
+  onDeleteTask: (id: number) => void;
 };
 
 export default function TaskListItem({
   task,
   onToggleTask,
+  onDeleteTask,
 }: TaskListItemProps) {
   return (
     <li>
@@ -20,6 +22,12 @@ export default function TaskListItem({
         />
         {task.title}
       </label>
+      <button
+        onClick={() => onDeleteTask(task.id)}
+        aria-label={`Delete ${task.title}`}
+      >
+        Delete
+      </button>
     </li>
   );
 }

@@ -24,13 +24,22 @@ function App() {
     );
   };
 
+  const onDeleteTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
     <div>
       <h1>Tasks</h1>
       <AddTask onAddTask={onAddTask} />
       <TaskList header={<TaskListHeader count={tasks.length} />}>
         {tasks.map((task) => (
-          <TaskListItem key={task.id} task={task} onToggleTask={onToggleTask} />
+          <TaskListItem
+            key={task.id}
+            task={task}
+            onToggleTask={onToggleTask}
+            onDeleteTask={onDeleteTask}
+          />
         ))}
       </TaskList>
     </div>
