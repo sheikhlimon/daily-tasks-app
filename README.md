@@ -21,10 +21,10 @@ A modern, responsive daily tasks app built with React, TypeScript, and Tailwind 
 
 1. Clone the repo:
 
-```bash
-git clone https://github.com/sheikhlimon/daily-tasks.app.git
-cd daily-tasks-app
-```
+   ```bash
+   git clone https://github.com/sheikhlimon/daily-tasks-app.git
+   cd daily-tasks-app
+   ```
 
 2. Install dependencies:
 
