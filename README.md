@@ -68,13 +68,22 @@ Tests cover adding tasks, toggling, deleting, input validation, and UI interacti
 ```
 src/
 ├── App.tsx          # Main app component
-├── AddTask.tsx      # Add task form
-├── TaskItemList.tsx # Individual task item
-├── TaskList.tsx     # Task list container
-├── TaskListHeader.tsx # Task count header
-├── types.ts         # TypeScript types
+├── App.test.tsx     # Unit tests for App component
+├── main.tsx         # App entry point
 ├── index.css        # Tailwind CSS imports
-└── setupTest.ts     # Test setup
+├── setupTest.ts     # Test setup
+├── components/
+│   ├── tasks/
+│   │   ├── AddTask.tsx      # Add task form
+│   │   ├── TaskItemList.tsx # Individual task item
+│   │   ├── TaskList.tsx     # Task list container
+│   │   └── TaskListHeader.tsx # Task count header
+├── types/
+│   └── index.ts             # TypeScript types
+└── theme/
+    ├── theme.ts             # Theme definitions
+    ├── ThemeProvider.tsx    # Theme provider component
+    └── useTheme.ts          # Theme hook
 ```
 
 ## License

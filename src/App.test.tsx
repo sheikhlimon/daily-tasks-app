@@ -1,10 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App.tsx";
+import { ThemeProvider } from "./theme/ThemeProvider.tsx";
+
+function renderWithTheme(component: React.ReactElement) {
+  return render(<ThemeProvider>{component}</ThemeProvider>);
+}
 
 describe("App", () => {
   test("should render input fields and app button", () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
@@ -14,7 +19,7 @@ describe("App", () => {
   });
 
   test("should add task to list when add button is clicked", async () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
@@ -27,7 +32,7 @@ describe("App", () => {
   });
 
   test("should clear input field after adding a task", async () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
 
@@ -41,7 +46,7 @@ describe("App", () => {
   });
 
   test("should not add an empty task", async () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
 
@@ -55,7 +60,7 @@ describe("App", () => {
   });
 
   test("should add a task by enter key", async () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
 
@@ -65,7 +70,7 @@ describe("App", () => {
   });
 
   test("should toggle task completion when checkbox is clicked", async () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
@@ -81,7 +86,7 @@ describe("App", () => {
   });
 
   test("should delete task when delete button is clicked", async () => {
-    render(<App />);
+    renderWithTheme(<App />);
 
     const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
