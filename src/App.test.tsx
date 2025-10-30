@@ -6,7 +6,7 @@ describe("App", () => {
   test("should render input fields and app button", () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
 
     expect(input).toBeInTheDocument();
@@ -16,7 +16,7 @@ describe("App", () => {
   test("should add task to list when add button is clicked", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
 
     await userEvent.type(input, "New Task");
@@ -29,7 +29,7 @@ describe("App", () => {
   test("should clear input field after adding a task", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
 
     const button = screen.getByRole("button", { name: "Add" });
 
@@ -43,7 +43,7 @@ describe("App", () => {
   test("should not add an empty task", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
 
     const button = screen.getByRole("button", { name: "Add" });
 
@@ -57,7 +57,7 @@ describe("App", () => {
   test("should add a task by enter key", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
 
     await userEvent.type(input, "New Task {enter}");
 
@@ -67,7 +67,7 @@ describe("App", () => {
   test("should toggle task completion when checkbox is clicked", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
 
     await userEvent.type(input, "New Task");
@@ -83,7 +83,7 @@ describe("App", () => {
   test("should delete task when delete button is clicked", async () => {
     render(<App />);
 
-    const input = screen.getByRole("textbox", { name: "Add Task:" });
+    const input = screen.getByRole("textbox", { name: "Add task" });
     const button = screen.getByRole("button", { name: "Add" });
 
     await userEvent.type(input, "Task to Delete");
